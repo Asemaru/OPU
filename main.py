@@ -1,20 +1,28 @@
-from PyQt6 import uic
-import PyQt6.QtWidgets 
+from ComPortClient import  ComPort
+from UI import Ui_MainWindow
+from PyQt6 import QtCore, QtGui, QtWidgets
 
-# эта функция срабатывает при нажатии кнопки
-def hello_world():
-    print(str(fio.text()))
 
-# подключаем файл, полученный в QtDesigner
-Form, Window = uic.loadUiType("OPU.ui")
-app = PyQt6.QtWidgets.QApplication([])
-window, form = Window(), Form()
-form.setupUi(window)
-window.show()
 
-# настраиваем сценарий для элемента pushButton
 
-fio = PyQt6.QtWidgets.QLineEdit
-form.pushButton.clicked.connect(hello_world) #UART 
-# запускаем окно программы
-app.exec()
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()                                    #Set UI
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    ui.pushButton.clicked.connect(ui.GetDatafromLineEdit)
+
+    # client = ComPort()
+    # client.Connect("COM3", 115200)                          #Connect to STM32
+    # Command = ''
+
+    # while Command != 'exit':
+    #         Command = input('Input your command ')
+    #         Command+=' \n'
+
+
+
+    
+    sys.exit(app.exec())
