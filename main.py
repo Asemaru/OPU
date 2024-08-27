@@ -4,8 +4,7 @@ from UI import Ui
 from PyQt6 import QtCore, QtGui, QtWidgets
 import matplotlib.pyplot as plt
 
-# fi = [1,2,3,4,5,6,7,8,9]
-# E = [1,2,3,4,5,6,7,8,9]
+global DATA
 
 def proverka():
       ui.UI.label_10.setText('Статус: Подключен')
@@ -16,15 +15,14 @@ def conect():
         # if client.Connected():
         #       ui.UI.label_10.setText('Статус: Подключен') 
         Command = '*IDN?'
-        client.Query(Command)
+        DATA = client.Query(Command)
     
 def DN():
-        # fig, ax = plt.subplots()             # Create a figure containing a single Axes.
-        # ax.plot(fi, E)  # Plot some data on the Axes.
-        # plt.savefig('DN.png')
-        # plt.show()
+        fi = [1,2,3,4,5,6,7,8,9]
+        E_f = [1,2,3,4,5,6,7,8,9]
         fig, ax = plt.subplots()             # Create a figure containing a single Axes.
-        ax.plot([1, 2, 3, 4], [1, 4, 2, 3])  # Plot some data on the Axes.                         # Show the figure.
+        ax.plot(fi, E_f)  # Plot some data on the Axes.   
+        ax.set_title(ui.User.FIO + ' ' + ui.User.group)                      # Show the figure.
         plt.savefig('DN.png')
         ui.UI.label_6.setPixmap(QtGui.QPixmap("DN.png"))
 
@@ -37,7 +35,7 @@ if __name__ == "__main__":
     MainWindow.show()
     ui.UI.savefio.clicked.connect(ui.GetDatafromLineEdit)
     ui.UI.mesuar.clicked.connect(ui.COMInd)
-    ui.UI.Connect.clicked.connect(conect)
+    ui.UI.Connect.clicked.connect(proverka)
     ui.UI.DN.clicked.connect(DN)
 
 
