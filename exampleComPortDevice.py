@@ -1,10 +1,10 @@
 from ComPortClient import ComPort
 
-port = "COM2"
+port = "COM1"
 
 
 client = ComPort()
-client.Connect(port, 115200)
+client.Connect(port, 9600)
 
 def requestProcessing(request:str):
 

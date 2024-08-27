@@ -9,8 +9,8 @@ class ComPort():
             try:
                 self.port = serial.Serial(port=portName, baudrate=baudRate, bytesize=byteSize, stopbits=stopBits)
                 self.Connected = True
-            # except serial.SerialException:
-                print("Проверьте првильность установки параметров")
+            # except serial.SerialException():
+            #     print("Проверьте првильность установки параметров")
             except:
                 print("Вознкла другая ошибка")
             finally:
