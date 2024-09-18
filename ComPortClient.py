@@ -12,7 +12,7 @@ class ComPort():
             # except serial.SerialException():
             #     print("Проверьте првильность установки параметров")
             except:
-                print("Вознкла другая ошибка")
+                print("Возникла другая ошибка")
             finally:
                 print(("Соединение установлено" if self.Connected else "Соединение не установлено"))
 

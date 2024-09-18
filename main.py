@@ -9,13 +9,14 @@ global DATA
 def proverka():
       ui.UI.label_10.setText('Статус: Подключен')
 
-def conect():
+def connect_STM():
         client = ComPort()
         client.Connect(ui.COM, ui.boundRate)                          #Connect to STM32
+        ui.UI.label_10.setText('Статус: Подключен')
         # if client.Connected():
         #       ui.UI.label_10.setText('Статус: Подключен') 
-        Command = '*IDN?'
-        DATA = client.Query(Command)
+        # Command = '*IDN?'
+        # DATA = client.Query(Command)
     
 def DN():
         fi = [1,2,3,4,5,6,7,8,9]
@@ -35,7 +36,7 @@ if __name__ == "__main__":
     MainWindow.show()
     ui.UI.savefio.clicked.connect(ui.GetDatafromLineEdit)
     ui.UI.mesuar.clicked.connect(ui.COMInd)
-    ui.UI.Connect.clicked.connect(proverka)
+    ui.UI.Connect.clicked.connect(connect_STM)
     ui.UI.DN.clicked.connect(DN)
 
 
